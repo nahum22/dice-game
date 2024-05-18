@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+  </head>
+  <div id="game-message"></div>
+
+  <body>
+    <div class="instructions-window">
+      <div class="instructions-content">
+        <h2>Game Instructions</h2>
+        <p>Here are the rules of the game:</p>
+        <ul>
+          <li>Rule 1: Description of rule 1.</li>
+          <li>Rule 2: Description of rule 2.</li>
+        </ul>
+        <div>set here the target score from 1 to 1000</div>
+        <input type="number" id="targetScore" min="1" max="1000" />
+        <button id="set-score-btn">start game</button>
+      </div>
+    </div>
+
+    <div class="block_player_1">
+      <h1>player1</h1>
+      <div class="player1score playerScore"></div>
+      <div class="curent_header">current</div>
+
+      <div class="current_Player1 current">0</div>
+    </div>
+    <div class="board_interface">
+      <button class="new_game action">NEW GAME</button>
+      <div class="flex">
+        <img class="image_dice1 cubeImage" src="" />
+      </div>
+      <div class="flex">
+        <img class="image_dice2 cubeImage" src="" />
+      </div>
+      <button class="roll_dice action">ROLL DICE</button>
+      <button class="move_game action">HOLD</button>
+    </div>
+    <div class="block_player_2">
+      <h1>player2</h1>
+      <div class="player2score playerScore"></div>
+      <div class="curent_header">current</div>
+      <div class="current_Player2 current">0</div>
+    </div>
+  </body>
+
+  <script src="index.js"></script>
+</html>
