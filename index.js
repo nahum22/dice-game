@@ -93,7 +93,7 @@ let playerTurn = 1;
 
 function rollDice() {
   playDiceSound();
-  const cube1 = 6;
+  const cube1 = Math.round(Math.random() * 5 + 1);
   const cube2 = Math.round(Math.random() * 5 + 1);
   displayCubes(cube1, cube2);
 
