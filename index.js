@@ -1,6 +1,6 @@
 window.onload = function () {
-  initizlizaScore();
   rollDice();
+  initizlizaScore();
 };
 
 function startFireworks() {
@@ -93,10 +93,22 @@ let playerTurn = 1;
 
 function rollDice() {
   playDiceSound();
-  const cube1 = Math.round(Math.random() * 5 + 1);
+  const cube1 = 6;
   const cube2 = Math.round(Math.random() * 5 + 1);
   displayCubes(cube1, cube2);
-  addScoreToCurrent();
+
+  const score1 = parseInt(cube1Image.src.slice(-5, -4));
+  const score2 = parseInt(cube2Image.src.slice(-5, -4));
+  if (!((score1 === 6) & (score2 === 6))) {
+    addScoreToCurrent();
+  } else {
+    resetCurrentDueBackLuck();
+    switchPlayeers();
+    displayCubes(cube1, cube2);
+    window.alert("notice, you got 6 6 switching players");
+    //  rollDice();
+  }
+  //addScoreToPlayer();
 }
 function displayCubes(cube1, cube2) {
   cube1Image.src = "/images/dice" + "-" + cube1 + ".png";
@@ -120,11 +132,20 @@ function gameMove() {
 
 function addScoreToPlayer() {
   const player = getActivePlayerScore();
+  const playerCurrent = getCurrentPlayerScore();
   const score1 = parseInt(cube1Image.src.slice(-5, -4));
   const score2 = parseInt(cube2Image.src.slice(-5, -4));
   if (!((score1 === 6) & (score2 === 6))) {
-    player.textContent = parseInt(player.textContent) + (score1 + score2);
+    player.textContent = playerCurrent.textContent;
+    // player.textContent = parseInt(player.textContent) + (score1 + score2);
+  } else {
   }
+}
+
+function resetCurrentDueBackLuck() {
+  const player = getActivePlayerScore();
+  const playerCurrent = getCurrentPlayerScore();
+  playerCurrent.textContent = player.textContent;
 }
 
 function addScoreToCurrent() {
@@ -132,7 +153,8 @@ function addScoreToCurrent() {
   const playerCurrent = getCurrentPlayerScore();
   const score1 = parseInt(cube1Image.src.slice(-5, -4));
   const score2 = parseInt(cube2Image.src.slice(-5, -4));
-  playerCurrent.textContent = score1 + score2 + parseInt(player.textContent);
+  playerCurrent.textContent =
+    score1 + score2 + parseInt(playerCurrent.textContent);
 }
 
 function getCurrentPlayerScore() {
