@@ -21,11 +21,14 @@ function initizlizaScore() {
 let endGameMessage = document.getElementById("game-message");
 
 function hideMessage() {
+  playerTurn = 1;
   endGameMessage.style.display = "none";
+  endGameMessage.textContent = "";
 }
 
 function showMessage() {
   endGameMessage.style.display = "block";
+  endGameMessage.textContent = `player${playerTurn} win!`;
 }
 
 function switchPlayeers() {
@@ -126,8 +129,8 @@ moveAction.addEventListener("click", gameMove);
 newGame.addEventListener("click", startNewGame);
 function gameMove() {
   addScoreToPlayer();
-  switchPlayeers();
   checkEndGame();
+  switchPlayeers();
 }
 
 function addScoreToPlayer() {
